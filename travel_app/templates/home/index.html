@@ -1,0 +1,21 @@
+{% extends 'layouts/layout.html' %}
+
+{% block content %}
+<form action="/trips/new" method="POST">
+    <label>Name</label>
+    <input type="text" />
+    <label>Start date</label>
+    <input type="date" />
+    <label>End date</label>
+    <input type="date" />
+
+    <button role="submit">Create new trip</button>
+</form>
+
+<h2>My Trips</h2>
+<ul>
+    {% for trip in trips %}
+        <li>{{ trip.name }}</li>
+    {% endfor %}
+</ul>
+{% endblock %}
