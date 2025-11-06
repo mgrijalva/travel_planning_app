@@ -2,6 +2,7 @@ from psycopg2.extensions import connection as Psycopg2Connection
 from dataclasses import dataclass
 from typing import List
 
+
 def dummy_function(a: int, b: int) -> int:
     """Just for testing pytest"""
     return a + b
