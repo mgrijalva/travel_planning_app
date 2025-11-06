@@ -3,8 +3,9 @@
 ## Setup
 
 1. Install uv: https://github.com/astral-sh/uv?tab=readme-ov-file#installation
-2. Setup your database by running `make migrate`
-3. Run `make dev` to start the server
+2. Run `cp .env.example .env`
+3. Setup your database by running `make migrate`
+4. Run `make dev` to start the server
 
 ## Database Migrations
 
