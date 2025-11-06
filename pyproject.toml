@@ -10,3 +10,14 @@ dependencies = [
     "psycopg2>=2.9.11",
     "python-dotenv>=1.2.1",
 ]
+
+[dependency-groups]
+dev = [
+    "black>=25.9.0",
+    "flake8>=7.3.0",
+    "pyright>=1.1.407",
+    "pytest>=8.4.2",
+]
+
+[tool.pyright]
+include = ["travel_app"]

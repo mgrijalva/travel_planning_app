@@ -1,4 +1,3 @@
-import psycopg2
 import os
 from flask import g
 from psycopg2.pool import ThreadedConnectionPool

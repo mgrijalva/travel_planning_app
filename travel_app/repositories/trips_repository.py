@@ -3,13 +3,18 @@ from dataclasses import dataclass
 from typing import List
 
 
+def dummy_function(a: int, b: int) -> int:
+    """Just for testing pytest"""
+    return a + b
+
+
 @dataclass(frozen=True)
 class Trip:
     id: int
     name: str
 
 
-class TripRepository:
+class TripsRepository:
     def __init__(self, conn: Psycopg2Connection):
         self.conn = conn
 
