@@ -9,7 +9,7 @@ class Trip:
     name: str
 
 
-class TripRepository:
+class TripsRepository:
     def __init__(self, conn: Psycopg2Connection):
         self.conn = conn
 
