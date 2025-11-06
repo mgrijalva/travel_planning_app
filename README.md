@@ -1,4 +1,4 @@
-# Travel app
+# Travel Planner app
 
 ## Setup
 
