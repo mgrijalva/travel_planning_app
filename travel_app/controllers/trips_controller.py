@@ -1,6 +1,5 @@
 from flask import render_template, redirect, request
 from ..db import get_db
-from ..repositories.trips_repository import TripsRepository
 from psycopg2.extras import DictCursor
 
 
