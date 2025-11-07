@@ -8,5 +8,5 @@ def create_app() -> Flask:
     app.teardown_appcontext(db.release_conn)
 
     app.add_url_rule("/", view_func=trips_controller.list)
-
+    app.add_url_rule("/trips", view_func=trips_controller.create_trip, methods=["POST"])
     return app
