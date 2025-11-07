@@ -33,4 +33,4 @@ jobs:
         env:
           FLYWAY_URL: jdbc:postgresql://localhost:5432/travel_app_test
           FLYWAY_USER: postgres
-        run: make migrate
+        run: docker run --rm -v "./migrations:/flyway/sql" flyway/flyway migrate
