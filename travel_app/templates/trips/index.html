@@ -15,7 +15,11 @@
 <h2>My Trips</h2>
 <ul>
     {% for trip in trips %}
-        <li>{{ trip.title }}</li>
+        <li>
+            <a href="{{ url_for('trip_details', trip_id=trip.id) }}">
+                {{ trip.title }}
+            </a>
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}

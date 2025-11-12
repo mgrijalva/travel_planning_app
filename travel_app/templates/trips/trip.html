@@ -1,0 +1,28 @@
+{% extends 'layouts/layout.html' %}
+
+{% block content %}
+
+
+<form action="{{ url_for('trip_details', trip_id=trip.id) }}" method="POST">
+    <label>Name</label>
+    <input type="text" name="event-name" required/>
+    <label>Event date</label>
+    <input type="datetime-local" name="event-time" required/>
+    <label>Address</label>
+    <input type="text" name="address" required/>
+
+    <button role="submit">Create new event</button>
+</form>
+
+
+<h1>{{trip.title}}</h1>
+{% if events %}
+  <ul>
+  {% for ev in events %}
+    <li>{{ ev.event_name }} — {{ ev.event_time }}</li>
+  {% endfor %}
+  </ul>
+{% else %}
+  <p>No events for this trip.</p>
+{% endif %}
+{% endblock %}
