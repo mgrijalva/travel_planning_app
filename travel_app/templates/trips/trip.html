@@ -27,7 +27,7 @@
             <summary>{{ date_only.strftime('%B %-d, %Y') }}</summary>
             {% for e in events%}
               {% if e.event_time.date() == date_only %}
-                <li>{{ e.event_name }}</li>
+                <li>{{ e.event_name }} at {{e.event_time.strftime("%I:%M %p")}}</li>
               {% endif %}
             {%endfor%}
           </details>
