@@ -1,7 +1,8 @@
 {% extends 'layouts/layout.html' %}
 
 {% block content %}
-<form action="/trips" method="POST">
+<h1 style="margin-left:10px">Create a trip</h1>
+<form action="/trips" method="POST" class="form-box">
     <label>Name</label>
     <input type="text" name="title" required/>
     <label>Start date</label>
@@ -9,10 +10,10 @@
     <label>End date</label>
     <input type="date" name="end-date" required/>
 
-    <button role="submit">Create new trip</button>
+    <button role="submit">Submit</button>
 </form>
 
-<h2>My Trips</h2>
+<h2 style="margin-left:10px">My Trips</h2>
 <ul>
     {% for trip in trips %}
         <li>

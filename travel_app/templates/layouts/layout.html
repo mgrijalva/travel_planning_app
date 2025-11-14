@@ -1,10 +1,22 @@
+<head>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+    >
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}">
+</head>
+
+
 <!DOCTYPE html>
 <html>
     <body>
-        <h1>Travel App</h1>
-        <nav>
-            <a href="#">My Trips</a>
-            <a href="#">Settings</a>
+        <h1 style="margin-left:10px">Travel App</h1>
+        <nav aria-label="breadcrumb" style="--pico-nav-breadcrumb-divider: '✨'; padding-left: 10px;">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Test</a></li>
+                <li>Hello</li>
+            </ul>
         </nav>
 
         <div>

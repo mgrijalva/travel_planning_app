@@ -2,8 +2,9 @@
 
 {% block content %}
 
+<h1>{{trip.title}}</h1>
 
-<form action="{{ url_for('trip_details', trip_id=trip.id) }}" method="POST">
+<form action="{{ url_for('trip_details', trip_id=trip.id) }}" method="POST" class="form-box">
     <label>Name</label>
     <input type="text" name="event-name" required/>
     <label>Event date</label>
@@ -15,7 +16,6 @@
 </form>
 
 
-<h1>{{trip.title}}</h1>
 {% if events %}
     {% set seen = [] %}
     <ul>
@@ -24,10 +24,10 @@
         {% if date_only not in seen %}
           {% set _ = seen.append(date_only) %}
           <details>
-            <summary>{{ date_only.strftime('%B %-d, %Y') }}</summary>
+            <summary role="button" class="secondary outline event-drop-down">{{ date_only.strftime('%B %-d, %Y') }}</summary>
             {% for e in events%}
               {% if e.event_time.date() == date_only %}
-                <li>{{ e.event_name }} at {{e.event_time.strftime("%I:%M %p")}}</li>
+                <li style="margin-left:50px">{{ e.event_name }} at {{e.event_time.strftime("%I:%M %p")}}</li>
               {% endif %}
             {%endfor%}
           </details>

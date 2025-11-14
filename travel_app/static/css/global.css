@@ -1,0 +1,16 @@
+.form-box {
+    max-width: 400px;      
+    margin: 2rem 0 2rem 2rem; 
+    padding: 1rem;
+    border: 1px solid;       
+    border-radius: 5px;
+}
+
+.event-drop-down{
+    max-width: 600px;
+}
+
+li::marker {
+        font-size: 1.2em;
+        content: "⭐ ";
+    }
