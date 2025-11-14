@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1>{{trip.title}}</h1>
+<h1 style="margin-left:10px">{{trip.title}}</h1>
 
 <form action="{{ url_for('trip_details', trip_id=trip.id) }}" method="POST" class="form-box">
     <label>Name</label>
