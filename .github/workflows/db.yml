@@ -1,0 +1,40 @@
+name: Database checks
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  migrations:
+    name: validate migrations
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:17
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: travel_app_test
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Run migrations
+        run: |
+          docker run --rm \
+          --network host \
+          -e FLYWAY_URL=jdbc:postgresql://localhost:5432/travel_app_test \
+          -e FLYWAY_USER=postgres \
+          -e FLYWAY_PASSWORD=postgres \
+          -v "${{ github.workspace }}/migrations:/flyway/sql" \
+          flyway/flyway migrate
