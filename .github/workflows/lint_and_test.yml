@@ -43,6 +43,7 @@ jobs:
       run: make typecheck
   
   build-and-push:
+    needs: "test"
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -77,8 +78,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
+          # push: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ghcr.io/${{ github.repository }}:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
