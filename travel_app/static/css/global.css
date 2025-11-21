@@ -14,3 +14,20 @@ li::marker {
         font-size: 1.2em;
         content: "⭐ ";
     }
+
+
+      #map {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  font-family: Roboto, sans-serif;
+  font-weight: bold;
+}
