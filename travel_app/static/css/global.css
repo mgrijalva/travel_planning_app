@@ -31,3 +31,15 @@ p {
   font-family: Roboto, sans-serif;
   font-weight: bold;
 }
+
+.gap-line {
+  width: 2px;
+  height: 15px;
+  background: #ccc;
+  margin-left: 30px;
+  margin-top: -5px;
+}
+
+.time-display{
+  margin-left: 15px;
+}

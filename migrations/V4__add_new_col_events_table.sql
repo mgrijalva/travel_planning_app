@@ -1,0 +1,2 @@
+ALTER TABLE events
+ADD COLUMN travel_time_to_next_event int
