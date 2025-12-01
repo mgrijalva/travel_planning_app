@@ -33,12 +33,13 @@
                 {% if not loop.last %}
                   <div class="gap-line"></div>
                   {% if e.travel_time_to_next_event is not none %}
-                    {% set h, m = e.travel_time_to_next_event // 60, e.travel_time_to_next_event % 60 %}
-                    <div class="time-display">
-                      {% if h %}{{ h }} hr {% endif %}{{ m }} min
-                    </div>
-                    <div class="gap-line"></div>
-                  {% endif %}
+                  {% set h = e.travel_time_to_next_event // 3600 %}
+                  {% set m = (e.travel_time_to_next_event % 3600) // 60 %}
+                  <div class="time-display">
+                    {% if h %}{{ h }} hr {% endif %}{{ m }} min
+                  </div>
+                  <div class="gap-line"></div>
+                {% endif %}
                 {%endif%}
               {% endif %}
             {%endfor%}
