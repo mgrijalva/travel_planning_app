@@ -2,15 +2,29 @@
 
 {% block content %}
 
-<h1 style="margin-left:10px">{{trip.title}}</h1>
+<h1 style="text-align:center">{{trip.title}}</h1>
 
 <form action="{{ url_for('trip_details', trip_id=trip.id) }}" method="POST" class="form-box">
-    <label>Name</label>
-    <input type="text" name="event-name" required/>
-    <label>Event date</label>
-    <input type="datetime-local" name="event-time" required/>
-    <label>Address</label>
-    <input type="text" name="address" required/>
+    <fieldset>
+      <label>Name</label>
+      <input type="text" name="event-name" required/>
+      <label>Event date</label>
+      <input type="datetime-local" name="event-time" required/>
+    </fieldset>
+    <fieldset>
+      <legend>Mode of transportation:</legend>
+      <label><input type="radio" name="mode-transportation" value="driving" required> Car</label>
+      <label><input type="radio" name="mode-transportation" value="walking"> Walk</label>
+      <label><input type="radio" name="mode-transportation" value="bicycling"> Bike</label>
+      <label><input type="radio" name="mode-transportation" value="transit"> Public Transit</label>
+    </fieldset>
+    <fieldset>
+      <label>Address</label>
+      <input id="address" type="text" name="address" required/>
+      <input type="hidden" id="address-lat" name="address_lat">
+      <input type="hidden" id="address-lng" name="address_lng">
+    </fieldset>
+    
 
     <button role="submit">Create new event</button>
 </form>
@@ -27,7 +41,25 @@
             <summary role="button" class="secondary outline event-drop-down">{{ date_only.strftime('%B %-d, %Y') }}</summary>
             {% for e in events%}
               {% if e.event_time.date() == date_only %}
-                <li style="margin-left:50px">{{ e.event_name }} at {{e.event_time.strftime("%I:%M %p")}}</li>
+                <li style="margin-left:50px">{{ e.event_name }} at {{e.event_time.strftime("%I:%M %p")}} from {{e.address}}</li>
+                {% if not loop.last %}
+                  <div class="gap-line"></div>
+                  {% set next_event = events[loop.index] if loop.index < events|length else None %}
+                  {% if next_event and next_event.mode_of_transportation %}
+                      <div class="time-display">
+                        {{ next_event.mode_of_transportation }}
+                      </div>
+                  {% endif %}
+                  <div class="gap-line"></div>
+                  {% if e.travel_time_to_next_event is not none %}
+                  {% set h = e.travel_time_to_next_event // 3600 %}
+                  {% set m = (e.travel_time_to_next_event % 3600) // 60 %}
+                  <div class="time-display">
+                    {% if h %}{{ h }} hr {% endif %}{{ m }} min
+                  </div>
+                  <div class="gap-line"></div>
+                {% endif %}
+                {%endif%}
               {% endif %}
             {%endfor%}
           </details>
